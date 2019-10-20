@@ -31,7 +31,7 @@ pipeline {
             }
              steps  {
                 sleep 5
-                sh 'curl http://ec2-54-171-58-130.eu-west-1.compute.amazonaws.com/app1 | grep Landing'
+                sh 'curl http://ec2-54-171-58-130.eu-west-1.compute.amazonaws.com/app1 | grep xxxx'
              }
         }
 
