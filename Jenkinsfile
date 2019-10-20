@@ -30,9 +30,23 @@ pipeline {
                 branch 'develop'
             }
              steps  {
-                 echo  'env tested'
+                
+                sh 'sleep 5000'
+                sh 'curl http://ec2-54-171-58-130.eu-west-1.compute.amazonaws.com/app1 | grep Landing'
              }
         }
+    
+
+        // do some app test to make sure it works  and then deplo yo prod
+        stage ('deploy to stage') {
+        when {
+                branch 'develop'
+            }
+             steps  {
+                 echo  'complete'
+            }
+        }
+
         stage ('complete') {
              steps  {
                  echo  'complete'
