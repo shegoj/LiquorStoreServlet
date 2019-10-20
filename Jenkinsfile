@@ -21,8 +21,8 @@ pipeline {
             }
              steps  {
                  echo  'deployed'
-                 sh 'cp /tmp/key.pem jenkinskey4.pem && chmod 400  jenkinskey4.pem'
-                 sh 'scp -i  jenkinskey3.pem -o StrictHostKeyChecking=no target/SampleServlet.war  ec2-user@172.31.12.75:/var/lib/tomcat/webapps'
+                 sh 'cp /tmp/key.pem jenkinskey5.pem && chmod 400  jenkinskey5.pem'
+                 sh 'scp -i  jenkinskey5.pem -o StrictHostKeyChecking=no target/SampleServlet.war  ec2-user@172.31.12.75:/var/lib/tomcat/webapps'
              }
         }
         stage ('Test environment on App Server') {
