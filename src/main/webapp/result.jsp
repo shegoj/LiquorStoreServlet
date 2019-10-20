@@ -9,7 +9,7 @@
 <%
 List result= (List) request.getAttribute("brands");
 Iterator it = result.iterator();
-out.println("<br>We have <br><br>");
+out.println("<br>We Now Have  <br><br>");
 
 while(it.hasNext()){
 
