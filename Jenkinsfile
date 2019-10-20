@@ -11,9 +11,9 @@ pipeline {
          }
 
          stage ('pull down codbase') {
+            when { branch 'app1'}
              steps  {
-                 sh 'git clone https://github.com/shegoj/LiquorStoreServlet.git codebase'
-
+                 echo 'step up'
              }
          }
 
