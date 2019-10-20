@@ -11,11 +11,13 @@ pipeline {
          }
 
          stage ('pull down codbase') {
+           timeout (10, unit:'MINUTES') {
             when { branch 'app1'}
              steps  {
                  echo 'step up'
              }
          }
+        }
 
          stage ('deploy') {
              steps  {
