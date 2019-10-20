@@ -19,12 +19,14 @@ pipeline {
         }
 
          stage ('deploy') {
-               withCredentials([file(credentialsId: 'PRIVATE_KEY', variable: 'KEY')]) {
              steps  {
-                 sh 'file KEY'
-                 sh "ssh -i KEY ec2-userp@172.31.10.85 sh -c 'hostname; exit'"
+               withCredentials([file(credentialsId: 'PRIVATE_KEY', variable: 'KEY')]) {
+                 echo  'deploy'
 
+                 sh 'file KEY'
+                 sh "ssh -i \$KEY ec2-userp@172.31.10.85 sh -c 'hostname; exit'"
               }
+
                  echo  'deploy'
              }
         }
