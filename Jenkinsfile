@@ -7,7 +7,7 @@ pipeline {
         sh '''
         mvn -version
         git --version
-        kubectl --version
+        kubectl version --client=true
         '''
       }
     }
