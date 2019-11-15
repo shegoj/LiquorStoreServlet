@@ -26,5 +26,16 @@ pipeline {
         '''
       }
     }
+    stage ('test container') {
+      steps {
+       sh '''
+       id=$(docker run -p 8082:8080 -d testing)
+       curl localhost:8082/SampleServlet/ | grep "Liquor Store" && echo "Test successful"
+       echo "deleting container"
+       docker rm -f $id
+       echo "container deleted.. all is well"
+       '''
+      }
+    }
   }
 }
