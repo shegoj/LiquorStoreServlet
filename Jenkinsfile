@@ -15,7 +15,7 @@ pipeline {
       steps {
         sh '''
         echo 'building code'
-        mvn clean build
+        mvn clean install
         '''
       }
     }
