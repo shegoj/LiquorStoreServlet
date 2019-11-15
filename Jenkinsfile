@@ -11,5 +11,13 @@ pipeline {
         '''
       }
     }
+    stage ('build code') {
+      steps {
+        sh '''
+        echo 'building code'
+        mvn clean build
+        '''
+      }
+    }
   }
 }
