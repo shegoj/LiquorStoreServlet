@@ -37,5 +37,18 @@ pipeline {
        '''
       }
     }
+    stage ('push to docker hub') {
+      steps {
+        sh '''
+        echo "tagging image"
+        docker tag testing:latest shegoj/javaapp:v1
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+            echo "pushing container to hub"
+            docker login -u $user -p $pass
+            docker push shegoj/javaapp:v1
+            docker logout
+        }
+      }
+    }
   }
 }
