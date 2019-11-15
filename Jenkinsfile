@@ -48,6 +48,7 @@ pipeline {
             docker push shegoj/javaapp:v1
             docker logout
         }
+      '''
       }
     }
   }
