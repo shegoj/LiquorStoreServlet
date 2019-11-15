@@ -6,7 +6,7 @@ pipeline {
         echo 'verifying needed tool are available'
         sh '''
         mvn -version
-        git -version
+        git --version
         kubectl -version
         '''
       }
