@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: java-appv1
+    env: dev
+  name: java-appv1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-appv1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-appv1
+    spec:
+      containers:
+      - image: shegoj/javaapp:v1
+        name: week2tomcat
+        resources: {}
+        ports:
+        - containerPort: 8080
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: java-appv1
+    env: dev
+  name: java-appv1-lb
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: java-appv1
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: java-appv1
+    env: dev
+  name: java-appv1-cluster-ip
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: java-appv1
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: java-appv1
+    env: dev
+  name: java-appv1-nodeport
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: java-appv1
+  type: NodePort
+status:
+  loadBalancer: {}
