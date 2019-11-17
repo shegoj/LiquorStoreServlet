@@ -57,7 +57,14 @@ pipeline {
       steps {
          echo "deploying image to kubernete"
          withCredentials([file(credentialsId: 'dev_kube_config', variable: 'dev_kube_config')]) {
-         sh 'kubectl apply -f deploy.yaml --dry-run --kubeconfig  $dev_kube_config'
+          sh '''
+            kubectl apply -f deploy.yaml  --kubeconfig  $dev_kube_config
+            sleep 120
+            kubectl get svc
+            kubectl get svc
+            kubectl get svc
+          '''
+
         }
       }
     }
