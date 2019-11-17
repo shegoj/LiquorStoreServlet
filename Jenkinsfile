@@ -42,13 +42,23 @@ pipeline {
         sh '''
         echo "tagging image"
         docker tag testing:latest shegoj/javaapp:v1
+        '''
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+           sh '''
             echo "pushing container to hub"
-            docker login -u $user -p $pass
+            docker login -u shegoj -p $pass
             docker push shegoj/javaapp:v1
             docker logout
+           '''
         }
-      '''
+      }
+    }
+    stage ('deploy to kubernetes') {
+      steps {
+         echo "deploying image to kubernete"
+         withCredentials([file(credentialsId: 'dev_kube_config', variable: 'dev_kube_config')]) {
+         sh 'kubectl apply -f deploy.yaml --dry-run --kubeconfig  $dev_kube_config'
+        }
       }
     }
   }
