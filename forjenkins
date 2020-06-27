@@ -1,5 +1,8 @@
 pipeline {
    agent any
+   parameters{
+       choice(name: 'CHOICE', choices: ['SIT', 'UAT', 'PREPROD'], description: 'Select Deploy Environment')
+   }
 
    stages {
       stage('Validation and Testing') {
