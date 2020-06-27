@@ -17,6 +17,7 @@ public class LiquorService {
         if(type.equals(LiquorType.WINE)){
             brands.add("Adrianna Vineyard");
             brands.add(("J. P. Chenet"));
+            brands.add(("O. P   Naija"))
 
         }else if(type.equals(LiquorType.WHISKY)){
             brands.add("Glenfiddich");
