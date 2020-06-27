@@ -4,9 +4,8 @@ pipeline {
    stages {
       stage('Validation and Testing') {
          steps {
-            sh  'mn clean install'
- 
-         }
+
+            sh  'mvn clean install   ' }
       }
       stage('Deploy ') {
          steps {
